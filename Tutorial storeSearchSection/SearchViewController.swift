@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearched = false
     var isLoading = false
+    var dataTask: URLSessionDataTask?
     
     func performStoreRequest(with url: URL) -> Data? {
         do {
@@ -90,7 +91,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
-            
+            dataTask?.cancel()
             isLoading = true
             tableView.reloadData()
             searchResults = []
@@ -98,9 +99,12 @@ extension SearchViewController: UISearchBarDelegate {
             
             let url = iTunesURL(searchText: searchBar.text!)
             let session = URLSession.shared
-            let dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
+            dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
                 
-                if let error = error {
+                if let error = error as NSError? {
+                    if error.code == -999 {
+                        return
+                    }
                     print("Failure! \(error)")
                     DispatchQueue.main.async {
                         self.isLoading = false
@@ -124,7 +128,7 @@ extension SearchViewController: UISearchBarDelegate {
                     print("Failure! \(response!)")
                 }
             })
-            dataTask.resume()
+            dataTask?.resume()
             
             
             
