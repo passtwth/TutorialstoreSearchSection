@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,6 +19,10 @@ class SearchViewController: UIViewController {
     var isLoading = false
     var dataTask: URLSessionDataTask?
     
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        
+        performSearch()
+    }
     func performStoreRequest(with url: URL) -> Data? {
         do {
             return try Data(contentsOf: url)
@@ -50,9 +55,16 @@ class SearchViewController: UIViewController {
         
     }
     
-    func iTunesURL(searchText: String) -> URL {
+    func iTunesURL(searchText: String, category: Int) -> URL {
+        let kind: String
+        switch category {
+        case 1: kind = "musicTrack"
+        case 2: kind = "software"
+        case 3: kind = "ebook"
+        default: kind = ""
+        }
         let encoding = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let stringURL = String(format: "https://itunes.apple.com/search?term=%@&limit=200", encoding)
+        let stringURL = "https://itunes.apple.com/search?" + "term=\(encoding)&limit=200&entity=\(kind)"
         let url = URL(string: stringURL)
         return url!
     }
@@ -60,7 +72,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchBarHeigh = searchBar.frame.height
-        tableView.contentInset = UIEdgeInsets(top: searchBarHeigh, left: 0, bottom: 0, right: 0)
+        let navigationBarHeigh: CGFloat = 44
+        tableView.contentInset = UIEdgeInsets(top: searchBarHeigh + navigationBarHeigh, left: 0, bottom: 0, right: 0)
         
         var cellnib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellnib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
@@ -88,7 +101,8 @@ extension SearchViewController: UISearchBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+
+    func performSearch() {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             dataTask?.cancel()
@@ -97,7 +111,7 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             hasSearched = true
             
-            let url = iTunesURL(searchText: searchBar.text!)
+            let url = iTunesURL(searchText: searchBar.text!, category: segmentedControl.selectedSegmentIndex)
             let session = URLSession.shared
             dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
                 
@@ -120,7 +134,7 @@ extension SearchViewController: UISearchBarDelegate {
                         DispatchQueue.main.async {
                             self.isLoading = false
                             self.tableView.reloadData()
-                            print("main thread?" + (Thread.current.isMainThread ? "Yes" : "No"))
+                            
                         }
                         return
                     }
@@ -134,6 +148,9 @@ extension SearchViewController: UISearchBarDelegate {
             
         }
 
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSearch()
     }
     
     
@@ -164,12 +181,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
             let searchResult = searchResults[indexPath.row]
-            cell.nameLabel.text = searchResult.name
-            if searchResult.artistName.isEmpty {
-                cell.artistNameLabel.text = "Unknown"
-            } else {
-                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, searchResult.type)
-            }
+            cell.configure(for: searchResult)
             
             return cell
         }

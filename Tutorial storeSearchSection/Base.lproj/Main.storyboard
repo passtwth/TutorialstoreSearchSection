@@ -33,13 +33,37 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="jwy-ce-w7v"/>
                                 </connections>
                             </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clt-sk-ZMJ">
+                                <rect key="frame" x="0.0" y="76" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="mHx-oq-b3s">
+                                        <nil key="title"/>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="FFV-PZ-pLO">
+                                            <rect key="frame" x="10" y="7" width="300" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="E-Books"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jed-yU-Fkb"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hqm-QX-ruj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6oJ-65-aK6"/>
+                            <constraint firstItem="Clt-sk-ZMJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ebs-Te-TgR"/>
+                            <constraint firstItem="Clt-sk-ZMJ" firstAttribute="top" secondItem="hqm-QX-ruj" secondAttribute="bottom" id="H6A-wL-Qr4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hqm-QX-ruj" secondAttribute="trailing" id="JG5-oJ-8ru"/>
                             <constraint firstItem="hqm-QX-ruj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b0c-AK-2qY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zjs-7I-gDb" secondAttribute="trailing" constant="16" id="cZP-xI-4MS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Clt-sk-ZMJ" secondAttribute="trailing" id="gkd-Lw-a1v"/>
                             <constraint firstItem="zjs-7I-gDb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="iY2-WB-g51"/>
                             <constraint firstItem="zjs-7I-gDb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ngi-lB-kfm"/>
                             <constraint firstItem="zjs-7I-gDb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pcL-8a-0WZ"/>
@@ -48,6 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="hqm-QX-ruj" id="bVK-zH-kVx"/>
+                        <outlet property="segmentedControl" destination="FFV-PZ-pLO" id="w26-jT-gEZ"/>
                         <outlet property="tableView" destination="zjs-7I-gDb" id="4ZB-VR-5dp"/>
                     </connections>
                 </viewController>
