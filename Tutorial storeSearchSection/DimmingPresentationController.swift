@@ -6,4 +6,11 @@
 //  Copyright © 2018年 Fruit. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class DimmingPresentationController: UIPresentationController {
+    override var shouldRemovePresentersView: Bool {
+        return false
+    }
+}
+
