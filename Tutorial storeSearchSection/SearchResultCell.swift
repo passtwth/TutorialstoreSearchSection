@@ -47,5 +47,6 @@ class SearchResultCell: UITableViewCell {
         downloadTask = nil
         print("cancel download image")
     }
+    
 
 }
