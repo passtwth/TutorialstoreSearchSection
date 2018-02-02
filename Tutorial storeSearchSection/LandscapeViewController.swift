@@ -84,12 +84,14 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var col = 0
         var x = marginX
-        for (index, _) in searchResults.enumerated() {
-            let button = UIButton(type: .system)
-            button.backgroundColor = UIColor.white
-            button.setTitle("\(index)", for: .normal)
+        for (_, result) in searchResults.enumerated() {
+            let button = UIButton(type: .custom)
+            //button.backgroundColor = UIColor.white
+            //button.setTitle("\(index)", for: .normal)
+            button.setBackgroundImage(UIImage(named: "LandscapeButton"), for: .normal)
             button.frame = CGRect(x: x + peddingHorz, y: marginY + CGFloat(row) * itemHeight + peddingVert, width: buttonWidth, height: buttonHeight)
             scrollView.addSubview(button)
+            downloadImage(for: result, andPlaceOn: button)
             row += 1
             if row == rowPerPage {
                 row = 0 ; x += itemWidth ; col += 1
@@ -106,7 +108,20 @@ class LandscapeViewController: UIViewController {
         pageControl.currentPage = 0
         
     }
-
+    private func downloadImage(for searchResult: SearchResult, andPlaceOn button: UIButton) {
+        if let url = URL(string: searchResult.imageSmall) {
+            let task = URLSession.shared.downloadTask(with: url, completionHandler: { [weak button] url, res, error in
+                if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        if let button = button {
+                            button.setImage(image, for: .normal)
+                        }
+                    }
+                }
+            })
+            task.resume()
+        }
+    }
 
 }
 
