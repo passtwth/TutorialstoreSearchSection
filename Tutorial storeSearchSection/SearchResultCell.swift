@@ -45,7 +45,7 @@ class SearchResultCell: UITableViewCell {
         super.prepareForReuse()
         downloadTask?.cancel()
         downloadTask = nil
-        print("cancel download image")
+        //print("cancel download image")
     }
     
 
