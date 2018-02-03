@@ -16,6 +16,7 @@
 		AF3851D220205DF400F687F3 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851D120205DF400F687F3 /* SlideOutAnimationController.swift */; };
 		AF3851D420207F3100F687F3 /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851D320207F3100F687F3 /* LandscapeViewController.swift */; };
 		AF3851D62021F7B700F687F3 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851D52021F7B700F687F3 /* FadeOutAnimationController.swift */; };
+		AF3851D820240FD900F687F3 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851D720240FD900F687F3 /* Search.swift */; };
 		AF47E10F1FF210E800B649C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E10E1FF210E800B649C7 /* AppDelegate.swift */; };
 		AF47E1111FF210E800B649C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E1101FF210E800B649C7 /* SearchViewController.swift */; };
 		AF47E1141FF210E800B649C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF47E1121FF210E800B649C7 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		AF3851D120205DF400F687F3 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		AF3851D320207F3100F687F3 /* LandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		AF3851D52021F7B700F687F3 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
+		AF3851D720240FD900F687F3 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		AF47E10B1FF210E800B649C7 /* Tutorial storeSearchSection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tutorial storeSearchSection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF47E10E1FF210E800B649C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF47E1101FF210E800B649C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				AF47E1101FF210E800B649C7 /* SearchViewController.swift */,
 				AF3851C72018290600F687F3 /* DimmingPresentationController.swift */,
 				AF3851CF202016C100F687F3 /* BounceAnimationController.swift */,
+				AF3851D720240FD900F687F3 /* Search.swift */,
 				AF3851D320207F3100F687F3 /* LandscapeViewController.swift */,
 				AF3851D120205DF400F687F3 /* SlideOutAnimationController.swift */,
 				AF3851C3201592FF00F687F3 /* UIImageView+downloadImage.swift */,
@@ -317,6 +320,7 @@
 				AF3851C6201721FF00F687F3 /* DetailViewController.swift in Sources */,
 				AF3851D420207F3100F687F3 /* LandscapeViewController.swift in Sources */,
 				AF3851CE201EEF1500F687F3 /* GradientView.swift in Sources */,
+				AF3851D820240FD900F687F3 /* Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

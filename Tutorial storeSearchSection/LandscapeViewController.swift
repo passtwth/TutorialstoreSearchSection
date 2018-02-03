@@ -15,6 +15,8 @@ class LandscapeViewController: UIViewController {
     
     var searchResults: [SearchResult] = []
     private var firstTime = true
+    private var downloads = [URLSessionDownloadTask]()
+    var search: Search!
     
     @IBAction func pageChanged(_ sender: UIPageControl) {
         
@@ -47,7 +49,13 @@ class LandscapeViewController: UIViewController {
         
         if firstTime {
             firstTime = false
-            tileButton(searchResults)
+            switch search.state {
+            case .loading , .noResults, .notSearchedYet:
+                break
+            case .results(let list):
+                tileButton(list)
+            }
+            
         }
     }
     private func tileButton(_ searchResults: [SearchResult]) {
@@ -120,9 +128,16 @@ class LandscapeViewController: UIViewController {
                 }
             })
             task.resume()
+            downloads.append(task)
         }
     }
-
+    deinit {
+        print("deinit \(self)")
+        for task in downloads {
+            task.cancel()
+        }
+        
+    }
 }
 
 extension LandscapeViewController: UIScrollViewDelegate {
