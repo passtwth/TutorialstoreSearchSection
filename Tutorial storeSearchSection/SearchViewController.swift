@@ -88,6 +88,7 @@ extension SearchViewController: UISearchBarDelegate {
                     self.showNetworkError()
                 }
                 self.tableView.reloadData()
+                self.landscapeVC?.searchResultsReceived()
             })
         }
         
@@ -181,6 +182,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         landscapeVC = storyboard?.instantiateViewController(withIdentifier: "LandscapeViewController") as? LandscapeViewController
+        
         if let controller = landscapeVC {
             controller.search = search
             controller.view.frame = view.bounds
@@ -205,6 +207,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if let controller = landscapeVC {
             controller.willMove(toParentViewController: nil)
             coordinator.animate(alongsideTransition: { (_) in
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
                 controller.view.alpha = 0
             }, completion: { (_) in
                 controller.view.removeFromSuperview()

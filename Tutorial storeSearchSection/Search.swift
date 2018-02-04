@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 typealias SearchComplete = (Bool) -> Void
 class Search {
@@ -41,7 +42,7 @@ class Search {
         if !text.isEmpty {
             dataTask?.cancel()
             state = .loading
-            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let url = iTunesURL(searchText: text, category: category)
             let session = URLSession.shared
             dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -65,7 +66,7 @@ class Search {
                 }
 
                 DispatchQueue.main.async {
-                    
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.state = newState
                     completion(success)
                 }

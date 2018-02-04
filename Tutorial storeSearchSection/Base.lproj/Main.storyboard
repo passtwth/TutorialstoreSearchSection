@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="113"/>
+            <point key="canvasLocation" x="136" y="86"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="F5z-8g-Ffz">
@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7t-37-ZUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="114"/>
+            <point key="canvasLocation" x="941" y="84"/>
         </scene>
         <!--Landscape View Controller-->
         <scene sceneID="3Fv-cy-wlR">
@@ -231,15 +231,19 @@
                     <connections>
                         <outlet property="pageControl" destination="CAh-qW-Sdp" id="cRW-2H-RAm"/>
                         <outlet property="scrollView" destination="p63-oU-RJJ" id="AaE-PN-rhx"/>
+                        <segue destination="i8U-vO-dmC" kind="presentation" identifier="ShowDetail" id="Pe5-7I-G46"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMg-7F-Jvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802" y="112"/>
+            <point key="canvasLocation" x="137" y="904"/>
         </scene>
     </scenes>
     <resources>
         <image name="CloseButton" width="15" height="15"/>
         <image name="PriceButton" width="11" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LbK-uB-8CU"/>
+    </inferredMetricsTieBreakers>
 </document>
