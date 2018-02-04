@@ -70,14 +70,14 @@ class SearchResult: Codable, CustomStringConvertible {
     var type: String {
         let kind = self.kind ?? "audiobook"
         switch kind {
-        case "album": return "Album"
+        case "album": return NSLocalizedString("Album", comment: "Localized kind: Album")
         case "audiobook": return "Audio Book"
         case "ebook": return "E-Book"
         case "feature-movie": return "Movie"
         case "music-video": return "Music Video"
         case "podcast": return "Podcast"
         case "software": return "App"
-        case "song": return "Song"
+        case "song": return NSLocalizedString("Song", comment: "Localized kind: Song")
         case "tv-episode": return "TV Episode"
         default: break
         }
