@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF3851C22015885700F687F3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3851C12015885700F687F3 /* Launch Screen.storyboard */; };
 		AF3851C4201592FF00F687F3 /* UIImageView+downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851C3201592FF00F687F3 /* UIImageView+downloadImage.swift */; };
-		AF3851C6201721FF00F687F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851C5201721FF00F687F3 /* DetailViewController.swift */; };
+		AF3851C6201721FF00F687F3 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851C5201721FF00F687F3 /* MenuTableViewController.swift */; };
 		AF3851C82018290600F687F3 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851C72018290600F687F3 /* DimmingPresentationController.swift */; };
 		AF3851CE201EEF1500F687F3 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851CD201EEF1500F687F3 /* GradientView.swift */; };
 		AF3851D0202016C100F687F3 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3851CF202016C100F687F3 /* BounceAnimationController.swift */; };
@@ -21,6 +21,7 @@
 		AF389A712026C4EC0014B8DE /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF389A732026C4EC0014B8DE /* LoadingCell.xib */; };
 		AF389A7A2027276A0014B8DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF389A7C2027276A0014B8DE /* Localizable.strings */; };
 		AF389A93202759A80014B8DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF389A95202759A80014B8DE /* InfoPlist.strings */; };
+		AF389A9A20287DA00014B8DE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF389A9920287DA00014B8DE /* DetailViewController.swift */; };
 		AF47E10F1FF210E800B649C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E10E1FF210E800B649C7 /* AppDelegate.swift */; };
 		AF47E1111FF210E800B649C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E1101FF210E800B649C7 /* SearchViewController.swift */; };
 		AF47E1141FF210E800B649C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF47E1121FF210E800B649C7 /* Main.storyboard */; };
@@ -53,7 +54,7 @@
 /* Begin PBXFileReference section */
 		AF3851C12015885700F687F3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AF3851C3201592FF00F687F3 /* UIImageView+downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadImage.swift"; sourceTree = "<group>"; };
-		AF3851C5201721FF00F687F3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AF3851C5201721FF00F687F3 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		AF3851C72018290600F687F3 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		AF3851CD201EEF1500F687F3 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AF3851CF202016C100F687F3 /* BounceAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
@@ -66,6 +67,8 @@
 		AF389A8520272E790014B8DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AF389A89202730C80014B8DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		AF389A94202759A80014B8DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		AF389A96202865970014B8DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AF389A9920287DA00014B8DE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AF47E10B1FF210E800B649C7 /* Tutorial storeSearchSection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tutorial storeSearchSection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF47E10E1FF210E800B649C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF47E1101FF210E800B649C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -138,12 +141,13 @@
 				AF3851C72018290600F687F3 /* DimmingPresentationController.swift */,
 				AF3851CF202016C100F687F3 /* BounceAnimationController.swift */,
 				AF3851D720240FD900F687F3 /* Search.swift */,
+				AF389A9920287DA00014B8DE /* DetailViewController.swift */,
 				AF3851D320207F3100F687F3 /* LandscapeViewController.swift */,
 				AF3851D120205DF400F687F3 /* SlideOutAnimationController.swift */,
 				AF3851C3201592FF00F687F3 /* UIImageView+downloadImage.swift */,
 				AF389A732026C4EC0014B8DE /* LoadingCell.xib */,
 				AF83BEDD1FFB8A8200D87E64 /* SearchResultCell.swift */,
-				AF3851C5201721FF00F687F3 /* DetailViewController.swift */,
+				AF3851C5201721FF00F687F3 /* MenuTableViewController.swift */,
 				AF3851D52021F7B700F687F3 /* FadeOutAnimationController.swift */,
 				AF83BEDB1FFB545300D87E64 /* SearchResultCell.xib */,
 				AF83BED91FFB382400D87E64 /* SearchResult.swift */,
@@ -327,8 +331,9 @@
 				AF83BEDE1FFB8A8200D87E64 /* SearchResultCell.swift in Sources */,
 				AF3851D220205DF400F687F3 /* SlideOutAnimationController.swift in Sources */,
 				AF3851D62021F7B700F687F3 /* FadeOutAnimationController.swift in Sources */,
-				AF3851C6201721FF00F687F3 /* DetailViewController.swift in Sources */,
+				AF3851C6201721FF00F687F3 /* MenuTableViewController.swift in Sources */,
 				AF3851D420207F3100F687F3 /* LandscapeViewController.swift in Sources */,
+				AF389A9A20287DA00014B8DE /* DetailViewController.swift in Sources */,
 				AF3851CE201EEF1500F687F3 /* GradientView.swift in Sources */,
 				AF3851D820240FD900F687F3 /* Search.swift in Sources */,
 			);
@@ -395,6 +400,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AF389A94202759A80014B8DE /* zh-Hant */,
+				AF389A96202865970014B8DE /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

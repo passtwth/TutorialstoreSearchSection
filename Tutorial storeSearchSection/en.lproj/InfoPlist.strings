@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  Tutorial storeSearchSection
+
+  Created by HuangMing on 2018/2/4.
+  Copyright © 2018年 passtwth. All rights reserved.
+*/
+CFBundleDisplayName = "StoreSearch";

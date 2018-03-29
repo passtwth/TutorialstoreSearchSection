@@ -45,7 +45,9 @@ class Search {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let url = iTunesURL(searchText: text, category: category)
             let session = URLSession.shared
+            
             dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
+                
                 var success = false
                 var newState = State.notSearchedYet
                 if let error = error as NSError? ,error.code == -999 {

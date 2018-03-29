@@ -19,6 +19,8 @@ class SearchViewController: UIViewController {
     
     private let search = Search()
     
+    weak var splitViewDetail: DetailViewController?
+    
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
@@ -64,8 +66,12 @@ class SearchViewController: UIViewController {
         
         searchBar.becomeFirstResponder()
         // Do any additional setup after loading the view, typically from a nib.
+        title = NSLocalizedString("Search", comment: "split view master button")
         
         
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            searchBar.becomeFirstResponder()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,8 +145,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
    
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "ShowDetail", sender: indexPath)
+        searchBar.resignFirstResponder()
+        
+        if view.window?.rootViewController?.traitCollection.horizontalSizeClass == .compact {
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "ShowDetail", sender: indexPath)
+        } else {
+            if case .results(let list) = search.state {
+                splitViewDetail?.searchResult = list[indexPath.row]
+            }
+            if splitViewController?.displayMode != .allVisible {
+                hideMasterPane()
+            }
+        }
+        
         
         
     }
@@ -155,12 +173,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "ShowDetail" {
             if case .results(let list) = search.state {
                 let detailViewController = segue.destination as! DetailViewController
                 let indexPath = sender as! IndexPath
                 let searchResult = list[indexPath.row]
                 detailViewController.searchResult = searchResult
+                detailViewController.isPopUp = true
             }
             
             
@@ -217,6 +237,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 self.landscapeVC = nil
             })
 
+        }
+    }
+    private func hideMasterPane() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.splitViewController?.preferredDisplayMode = .primaryHidden
+        }) { (_) in
+            self.splitViewController?.preferredDisplayMode = .automatic
         }
     }
 
